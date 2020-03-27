@@ -95,7 +95,7 @@ default = ["logging", "asm"]   //去掉这里的 asm
 ### 编译 ckb-cli
 
 ```
-cargo build --target aarch64-unknown-linux-gnu
+cargo build --release --target aarch64-unknown-linux-gnu
 ```
 
 生成的发布件在 `target/aarch64-unknown-linux-gnu` 目录下。
@@ -118,22 +118,33 @@ cargo build --target aarch64-unknown-linux-gnu
 
    ```shell
    sudo apt update
-   sudo apt install rabbitmq-server libsnappy-dev
+   sudo apt install libssl-dev
    ```
 
 4. 运行 ckb
 
    上传前面编译好的 ckb 和 ckb-cli 到鲲鹏服务器。
 
-   运行：
+   运行：参见 [ckb文档](https://docs.ckb.dev/docs/docs/start-build-dev)
 
-   ```shell
+   查看日志，确认可以正常出块：
 
    ```
+   $ ./ckb run -C dev
+   2020-03-27 21:25:25.692 +08:00 main INFO sentry  sentry is disabled
+   2020-03-27 21:25:25.753 +08:00 main INFO ckb-db  Initialize a new database
+   2020-03-27 21:25:25.852 +08:00 main INFO ckb-db  Init database version 20191127135521
+   2020-03-27 21:25:25.857 +08:00 main INFO ckb-chain  Start: loading live cells ...
+   2020-03-27 21:25:25.857 +08:00 main INFO ckb-chain  Done: total 2 transactions.
+   2020-03-27 21:25:25.861 +08:00 main INFO main  ckb version: 0.30.1 (468401d-dirty 2020-03-27)
+   2020-03-27 21:25:25.861 +08:00 main INFO main  chain genesis hash: 0x823b2ff5785b12da8b1363cac9a5cbe566d8b715a4311441b119c39a0367488c
+   2020-03-27 21:25:25.861 +08:00 main INFO ckb-network  Generate random key
+   2020-03-27 21:25:25.861 +08:00 main INFO ckb-network  write random secret key to "dev/data/network/secret_key"
+   2020-03-27 21:25:25.863 +08:00 main INFO ckb-network  Listen on address: /ip4/0.0.0.0/tcp/8115/p2p/QmZkQTti55RDnt2CQMrhNAKkjo2V4EyazQ9VjJj9qdVRUd
+   2020-03-27 21:25:25.865 +08:00 NetworkRuntime-0 INFO ckb-network  p2p service event: ListenStarted { address: "/ip4/0.0.0.0/tcp/8115" }
+   2020-03-27 21:25:51.995 +08:00 ChainService INFO ckb-chain  block: 1, hash: 0x78d9d184e873280cfc440c81fe65b8e74957ebd586744a6b4beead0148849268, epoch: 0(1/1000), total_diff: 0x200, txs: 1
+   2020-03-27 21:25:57.001 +08:00 ChainService INFO ckb-chain  block: 2, hash: 0x43751d7066fef0b7331b24d182c060bf31bb32f26ff4ffe7dd3c758c98335037, epoch: 0(2/1000), total_diff: 0x300, txs: 1
+   ```
    
-   查看日志，确认可以正常出块：
    
-```shell
-   
-```
 

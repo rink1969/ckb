@@ -79,7 +79,7 @@ build: ## Build binary with release profile.
 
 .PHONY: build_aarch64
 build_aarch64: ## Build binary for aarch64.
-	cargo build ${VERBOSE} --target aarch64-unknown-linux-gnu
+	cargo build ${VERBOSE} --release --target aarch64-unknown-linux-gnu
 
 .PHONY: prod
 prod: ## Build binary for production release.
