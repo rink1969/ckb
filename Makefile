@@ -77,6 +77,10 @@ check: setup-ckb-test ## Runs all of the compiler's checks.
 build: ## Build binary with release profile.
 	cargo build ${VERBOSE} --release
 
+.PHONY: build_aarch64
+build_aarch64: ## Build binary for aarch64.
+	cargo build ${VERBOSE} --target aarch64-unknown-linux-gnu
+
 .PHONY: prod
 prod: ## Build binary for production release.
 	RUSTFLAGS="--cfg disable_faketime" cargo build ${VERBOSE} --release

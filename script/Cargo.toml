@@ -7,7 +7,7 @@ edition = "2018"
 build = "build.rs"
 
 [features]
-default = ["logging", "asm"]
+default = ["logging"]
 
 asm = ["ckb-vm/asm"]
 logging = ["ckb-logger"]
